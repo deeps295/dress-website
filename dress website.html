@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dress Shop</title>
+  <style>
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    /* Navigation */
+    nav {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      list-style: none;
+      padding: 0;
+    }
+
+    .nav-links li {
+      display: inline;
+      margin-left: 20px;
+    }
+
+    .nav-links li a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .nav-links li a:hover {
+      color: #ff8c00;
+    }
+
+    /* Hero Section */
+    .hero {
+      background-color: #ff8c00;
+      color: #fff;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .product-section {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .product img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .product {
+      background-color: #f4f4f4;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .add-to-cart, .buy-now {
+      background-color: #28a745;
+      color: white;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+
+    .add-to-cart:hover, .buy-now:hover {
+      background-color: #218838;
+    }
+
+    /* Contact Section */
+    .contact {
+      background-color: #f4f4f4;
+      padding: 40px;
+      text-align: center;
+    }
+
+    .contact form input,
+    .contact form textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+    }
+
+    .contact form button {
+      background-color: #ff8c00;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .contact form button:hover {
+      background-color: #e07b00;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 300px;
+      text-align: center;
+    }
+
+    .modal-content input,
+    .modal-content textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+    }
+
+    .modal-content button {
+      background-color: #ff8c00;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .modal-content button:hover {
+      background-color: #e07b00;
+    }
+
+    /* Close Button */
+    .close {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">Dress Shop</div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#products">Shop</a></li>
+      <li><a href="#cart">Cart (<span id="cart-count">0</span>)</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <h1>Welcome to Dress Shop</h1>
+    <p>Discover the latest fashion trends at affordable prices.</p>
+  </section>
+
+  <!-- Product Section -->
+  <section id="products" class="product-section">
+    <h2>Our Dresses</h2>
+    <div class="product-grid">
+      <div class="product">
+        <img src="C:\Users\Deepika T\Downloads\dress3.jpg" alt="Dress 1">
+        <h3>Modern Dress</h3>
+        <p>Rs.399</p>
+        <button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
+        <button class="buy-now" onclick="openModal()">Buy Now</button>
+      </div>
+<div class="product">
+        <img src="C:\Users\Deepika T\Downloads\kurti.jpg" alt="Dress 2">
+        <h3>Party wear</h3>
+        <p>Rs.699</p>
+        <button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
+<button class="buy-now" onclick="openModal()">Buy Now</button>
+
+      </div>
+      <div class="product">
+        <img src="C:\Users\Deepika T\Downloads\dress1111.avif" alt="Dress 3">
+        <h3>Ethnic wear</h3>
+        <p>Rs.499</p>
+        <button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
+<button class="buy-now" onclick="openModal()">Buy Now</button>
+
+      </div>
+      <div class="product">
+        <img src="C:\Users\Deepika T\Downloads\new baby.webp" alt="Dress 4">
+        <h3>Girl Baby Dress</h3>
+        <p>Rs.850</p>
+        <button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
+<button class="buy-now" onclick="openModal()">Buy Now</button>
+
+      </div>
+<div class="product">
+        <img src="C:\Users\Deepika T\Downloads\kid boy dress.jpg" alt="Dress 5">
+        <h3>Boy Baby Dress</h3>
+        <p>Rs.899</p>
+        <button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
+<button class="buy-now" onclick="openModal()">Buy Now</button>
+
+      </div>
+      <div class="product">
+        <img src="C:\Users\Deepika T\Downloads\saree.jpg" alt="Dress 6">
+        <h3>Bridal Saree</h3>
+        <p>Rs.2999</p>
+        <button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
+<button class="buy-now" onclick="openModal()">Buy Now</button>
+
+      </div>
+      <div class="product">
+        <img src="C:\Users\Deepika T\OneDrive\Desktop\men 2.jpg" alt="Dress 7">
+        <h3>Casual dress</h3>
+        <p>Rs.799</p>
+        <button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
+<button class="buy-now" onclick="openModal()">Buy Now</button>
+
+      </div>
+      <div class="product">
+        <img src="C:\Users\Deepika T\Downloads\men 111.jpg" alt="Dress 8">
+        <h3>Formal dress</h3>
+        <p>Rs.599</p>
+        <button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
+<button class="buy-now" onclick="openModal()">Buy Now</button>
+
+      </div>
+    </div>
+  </section>
+
+      <!-- More products as before... -->
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <h2>Contact Us</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 Online Dress Shop. All rights reserved.</p>
+    <div class="social-links">
+        <a href="https://www.facebook.com/yourpage" target="_blank">
+          <img src="C:\Users\Deepika T\OneDrive\Desktop\facebook-logo.png" alt="Facebook" style="width: 30px; margin: 0 10px;">
+        </a>
+        <a href="https://www.instagram.com/yourprofile" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/2560px-Instagram_logo_2022.svg.png" alt="Instagram" style="width: 30px; margin: 0 10px;">
+        </a>
+        <a href="https://twitter.com/yourprofile" target="_blank">
+          <img src="C:\Users\Deepika T\Downloads\twitter.jpg" alt="Twitter" style="width: 30px; margin: 0 10px;">
+        </a>
+    </div>
+    <p>&copy; 2024 Online Dress Centre. All rights reserved. Follow us on <a href="#" style="color: #ecf0f1;">Social Media</a>.</p>
+  </footer>
+
+  <!-- Modal for Buy Now -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h3>Enter Your Details</h3>
+      <form id="buy-form">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea placeholder="Your Address" required></textarea>
+        <button type="submit">Confirm Purchase</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    let cartCount = 0;
+
+    function addToCart() {
+      cartCount++;
+      document.getElementById('cart-count').innerText = cartCount;
+      alert("Item added to cart!");
+    }
+
+    // Open modal
+    function openModal() {
+      document.getElementById('modal').style.display = "flex";
+    }
+
+    // Close modal
+    function closeModal() {
+      document.getElementById('modal').style.display = "none";
+    }
+
+    // Handle form submission
+    document.getElementById('buy-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      alert("Your order has been placed!");
+      closeModal();
+    });
+  </script>
+
+</body>
+</html>
